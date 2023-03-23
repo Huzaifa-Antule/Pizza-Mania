@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+{% block title %}Recipies{% endblock title %}
+{% block body %}
+<strong>
+    <h2 class="text-center top-0 my-1"> <u>Our-Recipes</u></h2>
+</strong>
+<div class="container top-0 my-3">
+    <div class="carousel-inner ">
+        <img src="static\Bg image.jpeg" alt="bg image" height="400"  class="container-fluid">
+        <div class="carousel-caption top-0 my-5">
+            <table class="table table-hover table-bordered table-dark my-2">
+                <thead>
+                    <tr>
+                        <th scope="col">Sr.No</th>
+                        <th scope="col">Name </th>
+                        <th scope="col">Download</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <th scope="row">1</th>
+                        <td>Corn Pizza</td>
+                        <td><a href="static\Pizza Recipies.pdf">Corn Pizza Recipe </a></td>
+                    </tr>
+                    <tr>
+                        <th scope="row">2</th>
+                        <td>Onion pizza</td>
+                        <td><a href="static\onion pizza.jpg">Onion Pizza Recipe </a></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+{% endblock body %}

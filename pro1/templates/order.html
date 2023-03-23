@@ -1,0 +1,371 @@
+{% extends 'base.html' %}
+{% block title %} Place Order {% endblock title %}
+{% block body %}
+{% if messages %}
+{% for message in messages %}
+<div class="alert alert-{{message.tags}} alert-dismissible fade show" role="alert">
+    <strong>{{message}}</strong>
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+</div>
+<div>
+    {% endfor %}
+    {% endif %}
+
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-10 col-11 mx-auto shadow">
+                <div class="row mt-5 gx-3">
+                    <!-- left side section -->
+                    <div class="col-md-12 col-lg-8 col-11 mx-auto main_cart mb-lg-0 mb-5">
+                        <div class="card p-4">
+                            <h2 class="py-4 font-weight-bold"><u> Available Items : </u></h2>
+                            <div class="row">
+                                <!-- cart image -->
+                                <div class="col-md-5 col-11 mx-auto bg-light d-flex justify-content-center align-items-center container-fluid
+                                shadow product_id">
+                                    <img src="static\ivan-torres-MQUqbmszGGM-unsplash.jpg" height="50"
+                                        class="img-fluid">
+                                    <!-- product detail -->
+                                </div>
+                                <div class="col-md-7 col-11 mx-auto px-3 ">
+                                    <div class="row">
+                                        <div class="col-6 card-title">
+                                            <h4 class="mb-4 product_name">Sweet Corn Pizza </h4>
+                                            <p class="mb-2">Size : Regular ( 7 Peices )</p>
+                                            <p class="mb-2">Extra Cheese : No </p>
+                                            <p class="mb-4">Price : ₹ 80</p>
+                                        </div>
+                                        <div class="price_ind d-flex justify-content-between">
+                                            <p><b>Quantity:</b></p>
+                                            <nav aria-label="Page navigation ">
+                                                <ul class="pagination ">
+                                                    <li class="page-item"><button class="page-link mx-5"
+                                                            onclick="increaseNumber('textbox','')"><i
+                                                                class="fas fa-plus"></i></button>
+                                                    </li>
+                                                    <li class="page-item "><input type="text" name=""
+                                                            class="page-link col-5 " value="0" id="textbox"></li>
+                                                    <li class="page-item"><button class="page-link "
+                                                            onclick="decreaseNumber('textbox','')"><i
+                                                                class="fas fa-minus"></i></button>
+                                                    </li>
+                                                </ul>
+                                            </nav>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+
+                        </div>
+                        <div class="card p-4">
+                            <div class="row">
+                                <!-- cart image -->
+                                <div class="col-md-5 col-11 mx-auto bg-light d-flex justify-content-center align-items-center container-fluid
+                                shadow product_id">
+                                    <img src="static\fernando-andrade-_P76trHTWDE-unsplash.jpg" height="20"
+                                        class="img-fluid">
+                                    <!-- product detail -->
+                                </div>
+                                <div class="col-md-7 col-11 mx-auto px-3 ">
+                                    <div class="row">
+                                        <div class="col-6 card-title">
+                                            <h4 class="mb-4 product_name">Onion Pizza </h4>
+                                            <p class="mb-2">Size : Regular ( 7 Peices )</p>
+                                            <p class="mb-2">Extra Cheese : No </p>
+                                            <p class="mb-4">Price : ₹ 100 </p>
+                                        </div>
+                                        <div class="price_ind d-flex justify-content-between">
+                                            <p><b>Quantity:</b></p>
+                                            <nav aria-label="Page navigation ">
+                                                <ul class="pagination ">
+                                                    <li class="page-item"><button class="page-link mx-5"
+                                                            onclick="increaseNumber1('textbox1')"><i
+                                                                class="fas fa-plus"></i></button>
+                                                    </li>
+                                                    <li class="page-item "><input type="text" name=""
+                                                            class="page-link col-4  " value="0" id="textbox1"></li>
+                                                    <li class="page-item"><button class="page-link "
+                                                            onclick="decreaseNumber1('textbox1')"><i
+                                                                class="fas fa-minus"></i></button>
+                                                    </li>
+                                                </ul>
+                                            </nav>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+                    <div class="col-md-12 col-lg-4 col-11 mx-auto mt-lg-0 mt-md-5">
+                        <div class="right_side p-2 shadow bg-white">
+                            <h3 class="product_name mb-4"><strong>My Cart : </strong> </h3>
+                            <div class="price_ind d-flex justify-content-between">
+                                <p>Amount :</p>
+                                <p><b>₹ <span id="Amount">0.00</span></b></p>
+                            </div>
+                            <div class="price_ind d-flex justify-content-between">
+                                <p>Shipping Charges :</p>
+                                <p><b> ₹ 30.00 </b></p>
+                            </div>
+                            <hr>
+                            <div class="total-amt d-flex justify-content-between">
+                                <p><b>The Total Bill is : </b></p>
+                                <p><b>₹ <span type="number" id="total_cart" name="total_cart">0.00</span></b></span></p>
+                                <!-- <p><b>₹ <b><input id="total_cart" class="col-3" name="total_cart" value="0.00"></b></b>
+                                </p> -->
+
+                                <!-- <p><b>₹ <input type="text" name="total_cart" value="0.00" id="total_cart"
+                                            class="col-3"></b></p> -->
+                                <!-- <input type="number" name="onin" class="page-link" value="0" id="corn_piz"> -->
+                            </div>
+                        </div>
+                        <div class="order_ form mt-3 shadow">
+                            <div class="accordion" id="accordionPanelsStayOpenExample">
+                                <div class="accordion-item">
+                                    <h2 class="accordion-header" id="panelsStayOpen-headingOne">
+                                        <button class="accordion-button" type="button" data-bs-toggle="collapse"
+                                            data-bs-target="#panelsStayOpen-collapseOne" aria-expanded="true"
+                                            aria-controls="panelsStayOpen-collapseOne">
+                                            <b> Delivery Details : &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </b>
+
+                                        </button>
+                                    </h2>
+                                    <div id="panelsStayOpen-collapseOne" class="accordion-collapse collapse show"
+                                        aria-labelledby="panelsStayOpen-headingOne">
+                                        <form method="post" action="/order">
+                                            {% csrf_token %}
+                                            <div class="carousel-inner ">
+
+                                                <div class="container">
+                                                    <div class="mb-1">
+                                                        <label for="name" class="my-2 mx-2 mt-3"><b>Name :
+                                                            </b></label>
+                                                        <input type="text" id="name" name="name"
+                                                            placeholder="Please Enter your Name">
+                                                    </div>
+                                                    <div class="mb-3">
+                                                        <label for="number" class="my-1 mx-2 mt-2"><b>Contact No :
+                                                            </b></label>
+                                                        <input type="number" name="number" id="number"
+                                                            placeholder="Enter your Mobile No.">
+                                                    </div>
+                                                    <div class="mb-3">
+                                                        <label for="number" class="my-1 mx-2 mt-2"><b>Alternate No :
+                                                            </b></label>
+                                                        <input type="number" name="number1" id="number1"
+                                                            placeholder="Enter Alternate Mobile No.">
+                                                    </div>
+
+                                                    <div class="mb-3">
+                                                        <label for="desc" class="my-1 mx-2 mt-2"><b>Address :
+                                                            </b></label>
+                                                        <input type="desc" name="Address" id="desc"
+                                                            placeholder="Enter i.e -> Area/Road/Society/Apartment/HouseNo/pincode ">
+                                                    </div>
+                                                    <!-- <div class="total-amt d-flex justify-content-between">
+                                                    <p><b>The Total Bill is : </b></p>
+                                                    <p><b>₹ <span id="total_cart">0.00</span></b></span></p>
+                                                </div> -->
+                                                    <div class="accordion accordion-flush" id="accordionFlushExample">
+                                                        <div class="accordion-item">
+                                                            <h2 class="accordion-header" id="flusheadingOne">
+                                                                <button class="accordion-button collapsed" type="button"
+                                                                    data-bs-toggle="collapse"
+                                                                    data-bs-target="#flush-collapseOne"
+                                                                    aria-expanded="false"
+                                                                    aria-controls="flush-collapseOne">
+                                                                    <b><strong>Check Cart Items : &nbsp;
+                                                                            &nbsp;
+                                                                        </strong></b>
+                                                                </button>
+                                                            </h2>
+                                                            <div id="flush-collapseOne"
+                                                                class="accordion-collapse collapse"
+                                                                aria-labelledby="flush-headingOne"
+                                                                data-bs-parent="#accordionFlushExample">
+                                                                <div class="accordion-body mb-0">
+                                                                    <div
+                                                                        class="total-amt d-flex justify-content-between ">
+                                                                        <div>
+                                                                            <p><b>Onion pizza </b></p>
+                                                                            <p class="page-item "><input type="number"
+                                                                                    name="Onion_pizza" class="page-link"
+                                                                                    value="0" id="corn_piz">
+                                                                            </p>
+                                                                        </div>
+                                                                        <div>
+                                                                            <p><b>Sweet Corn pizza</b></p>
+                                                                            <p class="page-item "><input type="number"
+                                                                                    name="Sweet_Corn_pizza"
+                                                                                    class="page-link" value="0"
+                                                                                    id="corn_piz1">
+                                                                            </p>
+                                                                        </div>
+                                                                        <div>
+                                                                            <p class="page-item "><input type="number"
+                                                                                    name="total_bill" class="page-link"
+                                                                                    value="0.00" id="total_bill">
+                                                                            </p>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="text-center my-1 mx-2 mt-0">
+                                                <button type="submit" class="btn btn-primary">Place Order</button>
+                                            </div>
+
+                                    </div>
+                                    </form>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class=" mt-3 shadow">
+                        <div class="accordion accordion-flush" id="accordionFlushExample">
+                            <div class="accordion-item">
+                                <h2 class="accordion-header " id="flush-headingOne">
+                                    <button class="accordion-button collapsed " type="button" data-bs-toggle="collapse"
+                                        data-bs-target="#flush-collapseOne" aria-expanded="false"
+                                        aria-controls="flush-collapseOne">
+                                        <b> Delivery Time : &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </b>
+                                    </button>
+                                </h2>
+                                <div id="flush-collapseOne" class="accordion-collapse collapse"
+                                    aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
+                                    <div class="accordion-body">Hello Customer, If Your Order is placed it will be
+                                        <code>Deliver in 45-60 Mints.</code> If you wants to trace it you can Contact
+                                        <code> 0122-1234567890 </code>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="accordion-item">
+                                <h2 class="accordion-header" id="flush-headingTwo">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                        data-bs-target="#flush-collapseTwo" aria-expanded="false"
+                                        aria-controls="flush-collapseTwo">
+                                        <b> Privacy & Cancelation : &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </b>
+                                    </button>
+                                </h2>
+                                <div id="flush-collapseTwo" class="accordion-collapse collapse"
+                                    aria-labelledby="flush-headingTwo" data-bs-parent="#accordionFlushExample">
+                                    <div class="accordion-body"><code><b>Privacy :</b></code> Your Delivery Details Will
+                                        Not be
+                                        Shared. <br>
+                                        <code><b> Cancelation :</b></code> If your wants to cancel the order please call
+                                        within
+                                        <code>20-30 Mints On 0122-1234568890.</code>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+    var product_amount = document.getElementById('Amount');
+    var total_amount = document.getElementById('total_cart');
+    var piz_demo = document.getElementById('corn_piz');
+    var piz_demo1 = document.getElementById('corn_piz1');
+    var total_bill_1 = document.getElementById('total_bill');
+    const increaseNumber = (incum) => {
+        var itemval = document.getElementById(incum);
+        // console.log(itemval.value);
+        // itemval.value = 0
+        if (itemval.value >= 5) {
+            itemval.value = 5;
+        }
+        else {
+            itemval.value = parseInt(itemval.value) + 1;
+            piz_demo.value = itemval.value;
+            product_amount.innerHTML = parseInt(product_amount.innerHTML) + 80;
+            total_amount.innerHTML = parseInt(product_amount.innerHTML) + 30;
+            total_bill_1.value = parseInt(total_amount.innerHTML);
+
+        }
+    }
+    const decreaseNumber = (decum) => {
+        var itemval = document.getElementById(decum);
+        // console.log(itemval.value);
+        // itemval.value = 0
+        if (itemval.value <= 0) {
+            itemval.value = 0;
+            total_amount.innerHTML = 0;
+        }
+        else {
+            itemval.value = parseInt(itemval.value) - 1;
+            piz_demo.value = itemval.value;
+            product_amount.innerHTML = parseInt(product_amount.innerHTML) - 80;
+            total_amount.innerHTML = parseInt(total_amount.innerHTML) - 80;
+            total_bill_1.value = parseInt(total_amount.innerHTML);
+
+            if (product_amount.innerHTML <= 0) {
+                total_amount.innerHTML = 0;
+                total_bill_1.value = parseInt(total_amount.innerHTML);
+
+            }
+
+
+        }
+    }
+    const increaseNumber1 = (incum) => {
+        var itemval = document.getElementById(incum);
+        // console.log(itemval.value);
+        // itemval.value = 0
+        if (itemval.value >= 5) {
+            itemval.value = 5;
+        }
+        else {
+            itemval.value = parseInt(itemval.value) + 1;
+            piz_demo1.value = itemval.value;
+            product_amount.innerHTML = parseInt(product_amount.innerHTML) + 100;
+            total_amount.innerHTML = parseInt(product_amount.innerHTML) + 30;
+            total_bill_1.value = parseInt(total_amount.innerHTML);
+
+        }
+    }
+    const decreaseNumber1 = (decum) => {
+        var itemval = document.getElementById(decum);
+        // console.log(itemval.value);
+        // itemval.value = 0
+        if (itemval.value <= 0) {
+            itemval.value = 0;
+        }
+        else {
+            itemval.value = parseInt(itemval.value) - 1;
+            piz_demo1.value = itemval.value;
+            product_amount.innerHTML = parseInt(product_amount.innerHTML) - 100;
+            total_amount.innerHTML = parseInt(total_amount.innerHTML) - 100;
+            total_bill_1.value = parseInt(total_amount.innerHTML);
+
+            if (product_amount.innerHTML <= 0) {
+                total_amount.innerHTML = 0;
+                total_bill_1.value = parseInt(total_amount.innerHTML);
+
+            }
+        }
+    }
+
+
+
+</script>
+
+
+
+
+
+
+
+{% endblock body %}
