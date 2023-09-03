@@ -25,15 +25,15 @@ admin.site.index_title = "Welcome to PIZZA Mania Admin Portal"
 
 urlpatterns = [
 
-    path('admin/', admin.site.urls),
     path("" ,views.index, name='home'),
-    path("about",views.about, name='about'),
-    path("service",views.service, name='service'),
-    path("contact",views.contact, name='contact'),
-    path("Login",views.LoginUser, name='Login'),
-    path("Logout",views.LogoutUser, name='Logout'),
-    path("Recipes",views.Recipes, name='Recipes'),
-    path("order",views.order, name='order'),
+    path('admin/', admin.site.urls),
+    path("about/",views.about, name='about'),
+    path("service/",views.service, name='service'),
+    path("contact/",views.contact, name='contact'),
+    path("Login/",views.LoginUser, name='Login'),
+    path("Logout/",views.LogoutUser, name='Logout'),
+    path("Recipes/",views.Recipes, name='Recipes'),
+    path("order/",views.order, name='order'),
 
 ]+static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 if settings.DEBUG:

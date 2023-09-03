@@ -37,11 +37,11 @@ def LoginUser(request):
         password = request.POST.get('password')
         user = authenticate(username=username, password=password)
         if user is not None:
-               login(request,user)
-               return redirect("/")
+            login(request, user)
+            return redirect("/")
         else:
-               return render(request,'Login.html')
-
+            messages.error(request, "Invalid login credentials. Please try again.")
+    
     return render(request, 'Login.html')
 
 def LogoutUser(request):
