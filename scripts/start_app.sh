@@ -1,6 +1,6 @@
 #!/usr/bin/bash 
 
-sed -i 's/\[]/\["65.0.11.236"]/' /home/ubuntu/Pizza-Mania/pro1/settings.py
+sed -i 's/\[]/\["43.204.116.235"]/' /home/ubuntu/Pizza-Mania/pro1/settings.py
 
 python manage.py migrate 
 python manage.py makemigrations     
